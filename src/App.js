@@ -1,68 +1,55 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import Input from './Input'
+import Tabela from './Tabela'
 
 
 
-function Cabeca(){
-  return(
-    <div className="cabeca">
-      <p>Teste</p>
-    </div>
-  )
-}
 
-function App() {
-  return (
-    <body>
-      <div>
-        <div className="cabeca">
-          <p className="branco">HMAX</p>
-        </div>
+class App extends React.Component {
 
+  constructor(){
+    super()
+
+    this.state = {
+      buscas: [{destino : "nova york", checkIn : "19/04/22",checkOut:"25/04/22", nDeAdultos: 2, nDeCriancas:1, nDeQuartos:1}]
+    }
+  }
+
+  cadastraBusca = (busca) => {
+    this.setState(
+      (stat) =>{
+        return(
+          {buscas: [...stat.buscas,{...busca}]}
+        )
+      }
+    )
+  }
+
+  render(){
+    return (
+      <body>
         <div>
-
-          <div id="area-formulario">
-            <form>
-              <label className="branco">Qual o seu destino?</label><br/>
-              <input id="destino"></input><br/><br/>
-              <div id="check">
-                <div>
-                  <label className="branco">Check-In:</label><br/>
-                  <input className="checka"></input>
-
-                </div>
-                <div>
-                  <label className="branco">Check-Out:</label><br/>
-                  <input className="checka"></input>
-
-                </div>
-
-              </div><br/>
-              <div id="qtd">
-                <div>
-                  <label className="branco">Nº de adultos:</label><br/>
-                  <input type="number" className="qtda"></input>
-                </div>
-                <div>
-                  <label className="branco">Nº de Crianças:</label><br/>
-                  <input type="number" className="qtda"></input>
-                </div>
-                <div>
-                  <label className="branco">Nº de Quartos:</label><br/>
-                  <input type="number" className="qtda"></input>
-                </div>
-
-              </div>
-
-            </form>
-
+          <div className="cabeca">
+            <p className="branco">HMAX</p>
           </div>
 
+          <div id="area-principal">
+
+            <div id="area-formulario">
+              <Input/>
+
+            </div>
+
+            <div id="area-hoteis">
+              <Tabela buscas={this.state.buscas}/>
+            </div>
+
+          </div>
+            
         </div>
-          
-      </div>
-    </body>
-  );
+      </body>
+    )};
 }
 
 export default App;
