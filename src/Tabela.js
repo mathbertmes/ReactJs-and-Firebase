@@ -15,7 +15,7 @@ class Tabela extends React.Component{
                         <th>Nº de quartos</th>
                     </tr>
                     
-                    {buscas.map((busca) => {
+                    {buscas.map((busca) => (
                         <tr>
                             <td>{busca.destino}</td>
                             <td>{busca.checkIn}</td>
@@ -25,7 +25,7 @@ class Tabela extends React.Component{
                             <td>{busca.nDeQuartos}</td>
 
                         </tr>
-                    })}
+                    ))}
                         
         
                     
