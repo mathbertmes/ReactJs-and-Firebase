@@ -37,7 +37,7 @@ class App extends React.Component {
           <div id="area-principal">
 
             <div id="area-formulario">
-              <Input/>
+              <Input cadastraBusca={this.cadastraBusca}/>
 
             </div>
 

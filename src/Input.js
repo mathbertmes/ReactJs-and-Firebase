@@ -19,6 +19,12 @@ class Input extends React.Component{
         this.setState({[event.target.name]: event.target.value})
     }
 
+    handleClick = (event) => {
+        event.preventDefault();
+        this.props.cadastraBusca(this.state)
+        
+    }
+
     render(){
         return(
             <form>
@@ -52,7 +58,7 @@ class Input extends React.Component{
                   </div>
 
                 </div><br/>
-                <button id="btn-buscar">Buscar</button>
+                <button id="btn-buscar" onClick={this.handleChange}>Buscar</button>
 
               </form>
         )
