@@ -1,6 +1,22 @@
 .App {
   text-align: center;
 }
+.box-formulario{
+  text-align: left;
+
+}
+
+.inputs{
+  width: 300px;
+}
+
+.botaoEnviar{
+  padding: 10px;
+  width: 60px;
+  height: 35px;
+  position: relative;
+  left: 105px
+}
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +51,71 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.cabeca{
+  border: 1px solid red;
+  height: 80px;
+  margin:0px;
+  text-align: center;
+}
+
+.branco{
+  color:white;
+}
+
+#area-formulario{
+  margin: 0px;
+  padding:15px;
+  width: 420px;
+  border: 1px solid yellow;
+  text-align: center;
+  font-size: 1.2em;
+  
+}
+
+#destino{
+  width: 350px;
+  height: 30px;
+  border-radius: 10px 20px;
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+  
+}
+
+
+
+input:focus{
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+#check{
+  display: flex;
+  justify-content: space-around;
+}
+
+.checka{
+  width: 100px;
+  height: 30px;
+  border-radius: 10px 20px;
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+#qtd{
+  display: flex;
+  justify-content: space-around;
+}
+
+.qtda{
+  width: 100px;
+  height: 30px;
+  border-radius: 10px 20px;
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
 }
