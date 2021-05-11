@@ -23,12 +23,22 @@ class App extends React.Component {
   
   }
 
+  removeDoc = (id) => {
+    firebase.firestore().collection('Busca').doc(id).delete()
+    .then(() => console.log("Busca deletada com sucesso!"))
+    .catch((erro) => console.log(erro))
+    
+  }
+
   removeDocumento = (id) =>{
     this.setState(
       (state) => {
         return{
           buscas: state.buscas.filter((b) => b.id !==id)
         }
+      },() => {
+        this.removeDoc(id)
+        
       }
     )
   }
