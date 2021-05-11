@@ -2,6 +2,8 @@ import React from 'react'
 import './App.css';
 import Input from './Input'
 import Tabela from './Tabela'
+import firebase from './firebase'
+import {v4 as uuidv4 } from 'uuid'
 
 
 
@@ -12,23 +14,44 @@ class App extends React.Component {
     super()
 
     this.state = {
-      buscas: [{destino : "nova york", checkIn : "19/04/22",checkOut:"25/04/22", nDeAdultos: 2, nDeCriancas:1, nDeQuartos:1}]
+      buscas: []
     }
   }
 
+  adicionaDocumento = (busca) =>{
+    firebase.firestore().collection('Busca').doc(busca.id).set(busca)
+  
+  }
+
+  removeDocumento = (id) =>{
+    this.setState(
+      (state) => {
+        return{
+          buscas: state.buscas.filter((b) => b.id !==id)
+        }
+      }
+    )
+  }
+
+
   cadastraBusca = (busca) => {
+    var novaBusca = {...busca,id:uuidv4()}
+
     this.setState(
       (stat) =>{
         return(
-          {buscas: [...stat.buscas,{...busca}]}
+          {buscas: [...stat.buscas, novaBusca]}
         )
+      },() => {
+        this.adicionaDocumento(novaBusca)
+        console.log("Busca cadsatrada")
       }
     )
   }
 
   render(){
     return (
-      <body>
+      
         <div>
           <div className="cabeca">
             <p className="branco">HMAX</p>
@@ -42,13 +65,13 @@ class App extends React.Component {
             </div>
 
             <div id="area-hoteis">
-              <Tabela buscas={this.state.buscas}/>
+              <Tabela buscas={this.state.buscas} removeDocumento={this.removeDocumento}/>
             </div>
 
           </div>
             
         </div>
-      </body>
+      
     )};
 }
 

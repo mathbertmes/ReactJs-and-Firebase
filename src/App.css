@@ -54,24 +54,25 @@
 }
 
 .cabeca{
-  border: 1px solid red;
   height: 80px;
-  margin:0px;
+  margin:0;
   text-align: center;
+  background-color: #282c34;
 }
 
 .branco{
   color:white;
 }
 
+
 #area-formulario{
   margin: 0px;
   padding:15px;
   width: 420px;
-  border: 1px solid yellow;
+  height: 600px;
   text-align: center;
   font-size: 1.2em;
-  padding-top: 150px;
+  padding-top: 50px;
   padding-bottom: 150px;
   
 }
@@ -122,6 +123,9 @@ input:focus{
   border: 0 none;
   outline: 0;
 }
+input{
+  background-color: #B7BABA;
+}
 
 #btn-buscar{
   width: 380px;
@@ -130,21 +134,40 @@ input:focus{
   box-shadow: 0 0 0 0;
   border: 0 none;
   outline: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+  background-color: #1567C3;
+}
+
+#btn-buscar:hover{
+  top:-4px;
+  box-shadow:0 4px 1px #030833;
+  transition: all .2s ease-in-out;
 }
 
 #area-principal{
   display: flex;
+  background-color: white;
+  
   
 }
 
 #area-hoteis{
   width: 1100px;
   height: 450px;
-  border: 1px solid red;
   text-align: center;
 }
 
-.hotel{
-  width: 900px;
+
+#tabela{
+  padding: auto;
+  border-spacing: 15px 5px;
+  background-color: #B7BABA;
+  margin:50px auto;
+}
+
+.componentes{
   
 }
+
+
