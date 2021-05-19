@@ -1,21 +1,26 @@
+* {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
 .App {
   text-align: center;
 }
-.box-formulario{
+.box-formulario {
   text-align: left;
-
 }
 
-.inputs{
+.inputs {
   width: 300px;
 }
 
-.botaoEnviar{
+.botaoEnviar {
   padding: 10px;
   width: 60px;
   height: 35px;
   position: relative;
-  left: 105px
+  left: 105px;
 }
 
 .App-logo {
@@ -53,121 +58,201 @@
   }
 }
 
-.cabeca{
+.cabeca {
   height: 80px;
-  margin:0;
+  margin: 0;
   text-align: center;
   background-color: #282c34;
 }
 
-.branco{
-  color:white;
+.branco {
+  color: white;
 }
 
-
-#area-formulario{
+#pesquisaGeral{
   margin: 0px;
-  padding:15px;
+  padding: 15px;
   width: 420px;
+  height: 640px;
+  text-align: left;
+  background-color: white;
+  border-right: 1px solid black;
+}
+
+.exibicao{
+  margin: auto auto;
+  width: 800px;
   height: 600px;
-  text-align: center;
-  font-size: 1.2em;
-  padding-top: 50px;
-  padding-bottom: 150px;
-  
+  border: 1px solid blue;
+  padding: 10px;
 }
 
-#destino{
-  width: 350px;
-  height: 30px;
-  border-radius: 10px 20px;
-  box-shadow: 0 0 0 0;
-  border: 0 none;
-  outline: 0;
-  
+.banner{
+  width: 800px;
+  height: 150px;
+  background-color: cornflowerblue;
+  position: relative;
 }
 
-
-
-input:focus{
-  box-shadow: 0 0 0 0;
-  border: 0 none;
-  outline: 0;
-}
-
-#check{
+.imagensPequenasDestinosJuntas{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+
 }
 
-.checka{
+.imagensPequenasDestinos{
+  margin-top: 50px;
+  width : 360px;
+  height: 150px;
+  background-color: #0cab16;
+  position: relative;
+}
+
+.descricaoBanner{
   width: 100px;
+  height: 35px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 5px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+#headerPesquisa{
+  text-align: center;
+}
+#area-formulario {
+  margin: auto auto;
+}
+
+
+#destino {
+  width: 420px;
   height: 30px;
-  border-radius: 10px 20px;
+  border-radius: 5px;
+  background-color: white;
+  outline: 0;
+}
+
+input:focus {
   box-shadow: 0 0 0 0;
   border: 0 none;
   outline: 0;
 }
 
-#qtd{
-  display: flex;
-  justify-content: space-around;
-  font-size: 0.9em;
-}
 
-.qtda{
-  width: 65px;
+.checka {
+  width: 420px;
   height: 30px;
-  border-radius: 10px 20px;
-  box-shadow: 0 0 0 0;
-  border: 0 none;
+  border-radius: 5px;
+  background-color: white;
   outline: 0;
 }
-input{
-  background-color: #B7BABA;
+
+
+.qtda {
+  width: 420px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: white;
+  outline: 0;
+}
+input {
+  background-color: #b7baba;
 }
 
-#btn-buscar{
-  width: 380px;
+#btn-buscar {
+  width: 420px;
   height: 40px;
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 0 0 0 0;
   border: 0 none;
   outline: 0;
   font-size: 1.2em;
   cursor: pointer;
-  background-color: #1567C3;
+  background-color: #1567c3;
 }
 
-#btn-buscar:hover{
-  top:-4px;
-  box-shadow:0 4px 1px #030833;
-  transition: all .2s ease-in-out;
+#btn-buscar:hover {
+  top: -4px;
+  box-shadow: 0 4px 1px #030833;
+  transition: all 0.2s ease-in-out;
 }
 
-#area-principal{
+#area-principal {
   display: flex;
   background-color: white;
-  
-  
 }
 
-#area-hoteis{
+#area-hoteis {
   width: 1100px;
   height: 450px;
   text-align: center;
 }
 
-
-#tabela{
+#tabela {
   padding: auto;
   border-spacing: 15px 5px;
-  background-color: #B7BABA;
-  margin:50px auto;
+  background-color: #b7baba;
+  margin: 50px auto;
 }
 
-.componentes{
+.cabecalho {
   
+  height: 80px;
+  background-color: #0cab16;
+  text-align: center;
+  margin: 0;
 }
 
+.navBar {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  width: 180px;
+}
+
+a {
+  text-decoration: none;
+  color: #030833;
+}
+
+a:hover {
+  background-color: white;
+  color: black;
+  top: -4px;
+  box-shadow: 0 4px 1px #20bb28;
+  transition: all 0.2s ease-in-out;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#cadastroGeral {
+  width: 1000px;
+  height: 700px;
+  margin: auto auto;
+  border : 1px solid red
+}
+
+.backgroundBranco{
+  background-color: white;
+  text-align: center;
+}
+
+.hotel{
+  margin: 30px auto;
+  width: 800px;
+  height: 180px;
+  border: 1px solid blue;
+  display: flex;
+
+}
+
+.imgHotel{
+  height: 180px;
+  width: 180px;;
+}
 

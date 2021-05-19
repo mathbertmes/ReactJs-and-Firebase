@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+label{
+  font-size: 1.2em;
+}
+
+.checkbox{
+  cursor: pointer;
+}
+input, input:active, input:focus{
+  border  : 1px solid black;
+}
+
+#cadastroGeral {
+  width: 1200px;
+  height: 500px;
+  margin :30px auto;
+  text-align: left;
+  padding: 10px;
+  border: none;
+}
+
+#headerCadastro{
+  margin : auto auto;
+}
+#telaPrincipal{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.camposJuntos{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.inputsTextSS {
+  width: 280px;
+  height: 30px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.inputsTextSmall {
+  width: 460px;
+  height: 30px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.inputsTextBig {
+  width: 590px;
+  height: 30px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+#estrelas {
+  width: 250px;
+  
+}
+#estrelas i {
+  font-size: 1.5em;
+}
+
+.selects{
+  width: 150px;
+  height: 30px;
+}
+
+.textArea{
+  width: 1200px;
+  height: 100px;
+  border : 1px solid black;
+  border-radius: 5px;
+
+}
+
+#botaoCadastrar{
+  width: 150px;
+  background-color: blue;
+  padding: 5px;
+  cursor : pointer;
+  border-radius: 5px;
+  font-size: 1.2em;
+  color: white;
+  position: relative;
+  left: 1050px
+}

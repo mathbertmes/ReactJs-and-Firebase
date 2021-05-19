@@ -1,0 +1,48 @@
+*{
+    margin:0;
+}
+
+#principal{
+    margin : 35px auto;
+    width: 400px;
+    padding:10px;
+    height: 500px;
+    text-align: center;
+    position: relative;
+    
+}
+form{
+    text-align: left;
+    height: 500px;
+    
+}
+
+.inputs{
+    width: 380px;
+    height: 20px;
+    padding:5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+}
+#termos{
+    text-decoration: underline;
+    color : blue;
+    cursor: pointer;
+}
+
+#botaoCad{
+    position: absolute;
+    left: 160px;
+    bottom : 40px;
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    background-color: blue;
+    font-size: 1em;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+}

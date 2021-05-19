@@ -1,0 +1,29 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+    width: 300px;
+    margin: 10px auto;
+
+  }
+
+  .pagination a {
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #1830b9;
+    border: 1px solid #1830b9;
+    color: white;
+    
+  }
+
+  #pesquisa{
+      width : 720px;
+      height: 35px;
+      text-decoration: none;
+  }
+  #botaoPesquisa{
+      width : 80px;
+      height: 35px;
+      text-decoration: none;
+  }
