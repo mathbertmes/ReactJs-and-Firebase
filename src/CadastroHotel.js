@@ -8,6 +8,8 @@ class cadastroHotel extends React.Component{
     constructor(){
         super()
         this.state = {
+            status : false,
+            index : 0,
             estrelas : 1,
             cnpj : '',
             descricao : '',
@@ -34,8 +36,10 @@ class cadastroHotel extends React.Component{
         }
     }
 
-    /*cadastraHotel = (hotel) => {
-        var novaBusca = { ...busca, id: uuidv4() };
+    cadastraHotel = (hotel) => {
+        firebase.firestore().collection("configHoteis").doc("hCwGAgOZcSV8qQCTDdbR").get()
+        .then((h) => this.setState((st) => {return {...st,index : h.data().qtdDocumentos}}))
+        var novahotel = { ...busca, id: uuidv4() };
     
         this.setState(
           (stat) => {
@@ -46,7 +50,7 @@ class cadastroHotel extends React.Component{
             console.log("Busca cadsatrada");
           }
         );
-      };*/
+      };
 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
