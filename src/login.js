@@ -1,5 +1,6 @@
 import React from "react";
 import './login.css'
+import firebase from "./firebase";
 
 class Login extends React.Component {
   state = {
@@ -11,11 +12,16 @@ class Login extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+
+
   handleClick = (e) => {
     e.preventDefault();
-    this.props.cadastraUsuario(this.state.email, this.state.senha);
-    this.setState({ email: "", senha: "" });
-  };
+    this.props.loga(this.state.email,this.state.senha)
+    this.setState({
+      email: "",
+      senha: "",
+    })
+  }
 
   render() {
     return (

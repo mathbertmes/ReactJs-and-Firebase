@@ -11,6 +11,7 @@ import CadastraHotel from "./CadastroHotel"
 import Hoteis from "./listagemHoteis"
 import CadastraUsuario from './CadastroUsuario'
 import CadastroDeDiaria from './CadastroDeDiaria'
+import Perfil from './Perfil'
 
 
 class App extends React.Component {
@@ -20,10 +21,52 @@ class App extends React.Component {
     this.state = {
       buscas: [],
       last : {},
-      first : {}
+      first : {},
+      isLogged : false,
+      user : {}
     };
   }
 
+  alteraUsuario = (name,value) =>{
+    this.setState((st) =>{ return {user : {...st.user,[name] : value}}})
+  }
+
+  alteraNomeBanco = () =>{
+    firebase.firestore().collection("Usuarios").where("cpf", "==", this.state.user.cpf).get()
+    .then((snapshot) => { 
+      const userId = snapshot.docs[0].id
+      console.log(userId)
+      firebase.firestore().collection("Usuarios").doc(userId).update(this.state.user)
+      .then(()=> {alert("Usuario atualizado com sucesso!")})
+  })}
+
+  loga = (email, senha) =>{
+    firebase.firestore().collection("Usuarios").get().then((snapshot) => {
+      const users =  snapshot.docs.map((u) => u.data())
+      
+      users.forEach(element => {
+        if(email == element["email"] && senha == element["senha"]){
+          console.log("LOGOU")
+          firebase.firestore().collection("Usuarios").where("email", "==", email).get()
+          .then((snapshot)=>{
+            const user = snapshot.docs[0].data()
+            this.setState({isLogged : true, user : user})
+            console.log(this.state)
+            
+            
+          })
+
+        }
+
+        })
+        
+      });
+  }
+
+  sair = () =>{
+    this.setState({isLogged : false, user : {}})
+
+  }
 
   cadastraUsuario = (email, password) => {
     firebase
@@ -129,7 +172,7 @@ class App extends React.Component {
       },
       () => {
         this.adicionaDocumento(novaBusca);
-        console.log("Busca cadsatrada");
+        console.log("Busca cadastrada");
       }
     );
   };
@@ -140,18 +183,18 @@ class App extends React.Component {
     return (
       <div>
         <Router>
-          <Cabecalho />
+          <Cabecalho sair={this.sair} isLogged={this.state.isLogged}/>
           <Switch>
-            <Route path="/login">
+            {!this.state.isLogged && <Route  path="/login">
               <div>
-                <Login cadastraUsuario={this.cadastraUsuario} />
+                <Login loga={this.loga} />
               </div>
-            </Route>
-            <Route path="/cadastro-de-diarias">
+            </Route>}
+            {this.state.isLogged && <Route path="/cadastro-de-diarias">
               <div>
                 <CadastroDeDiaria />
               </div>
-            </Route>
+            </Route>}
 
             <Route path="/hoteis">
               <div>
@@ -159,17 +202,23 @@ class App extends React.Component {
               </div>
             </Route>
 
-            <Route path="/cadastro-usuario">
+            {this.state.isLogged  &&<Route path="/perfil">
+              <div>
+                <Perfil alteraNomeBanco={this.alteraNomeBanco} alteraUsuario={this.alteraUsuario} user={this.state.user}/>
+              </div>
+            </Route>}
+
+            {!this.state.isLogged &&<Route path="/cadastro-usuario">
               <div>
                 <CadastraUsuario/>
               </div>
-            </Route>
+            </Route>}
 
-            <Route path="/cadastro-hoteis">
+            {this.state.isLogged &&<Route path="/cadastro-hoteis">
               <div>
                 <CadastraHotel />
               </div>
-            </Route>
+            </Route>}
 
             <Route path="/">
               <div>

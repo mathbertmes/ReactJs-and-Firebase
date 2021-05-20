@@ -19,11 +19,34 @@
 
   #pesquisa{
       width : 720px;
-      height: 35px;
-      text-decoration: none;
+      height: 25px;
+      border-radius: 5px;
+      background-color: white;
+      border: 1px solid black;
   }
   #botaoPesquisa{
       width : 80px;
       height: 35px;
       text-decoration: none;
   }
+
+#div-filtros{
+  display: flex;
+  justify-content: space-between;
+  width: 220px;
+  margin: 10px 645px;
+}
+
+.filtrosLi{
+  width: 100px;
+  height: 30px;
+  background-color: #3E4BDC;
+  border-radius: 5px;
+  border : none;
+  color: white;
+  cursor: pointer;
+}
+
+.filtrosLi i{
+  margin:5px
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import firebase from "./firebase";
 
 class Input extends React.Component{
     constructor(){
@@ -19,9 +20,29 @@ class Input extends React.Component{
         this.setState({[event.target.name]: event.target.value})
     }
 
+    adicionaDocumentoBusca = (busca) => {
+      firebase.firestore().collection("Busca").add(busca);
+      this.setState( {
+          
+        destino : '',
+        checkIn : '',
+        checkOut : '',
+        nDeAdultos: 0,
+        nDeCriancas: 0,
+        nDeQuartos: 0,
+    } )};
+
+    cadastraBusca = (busca) => {
+    this.adicionaDocumentoBusca(busca);
+    
+    }
+      
+
+
+
     handleClick = (event) => {
         event.preventDefault();
-        this.props.cadastraBusca(this.state)
+        this.cadastraBusca(this.state)
         
     }
 
