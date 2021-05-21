@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 class Cabecalho extends React.Component {
-
-
-  handleClick = () =>{
-    this.props.sair()
-  }
+  handleClick = () => {
+    this.props.sair();
+  };
 
   render() {
     return (
@@ -17,28 +14,27 @@ class Cabecalho extends React.Component {
           <div>
             <Link to="/">Home</Link>
           </div>
-          {this.props.isLogged && 
+          {this.props.isLogged && (
             <>
               <Link to="/hoteis">Buscar hoteis</Link>
               <Link to="/cadastro-hoteis">Cadastre seu hotel</Link>
               <Link to="/cadastro-de-diarias">Cadastro de diarias</Link>
               <Link to="/perfil">Minha conta</Link>
-              <a id="sair" onClick={this.handleClick}>Sair</a>
+              <Link to="/meus-hoteis">Meus Hoteis</Link>
+              <a id="sair" onClick={this.handleClick}>
+                Sair
+              </a>
             </>
-            
-          }
+          )}
 
-          {!this.props.isLogged && 
-          <>
-            <Link to="/hoteis">Buscar hoteis</Link>
-            <Link to="/login">Login</Link>
-            <Link to = "/cadastro-usuario">Cadastre-Se</Link>
-            
-            
-          </>
-          }
-          
-          
+          {!this.props.isLogged && (
+            <>
+              <Link to="/hoteis">Buscar hoteis</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/cadastro-usuario">Cadastre-Se</Link>
+            </>
+          )}
+
           <link></link>
         </div>
       </div>

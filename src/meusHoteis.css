@@ -1,0 +1,49 @@
+* {
+}
+
+#mh-principal {
+  width: 1000px;
+  margin: 30px auto;
+  border: 1px solid red;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mh-hoteis {
+  width: 700px;
+  height: 200px;
+  margin: 20px auto;
+  border: 1px solid blue;
+  display: flex;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.mh-imgHotel {
+  height: 180px;
+  width: 180px;
+}
+
+.mh-opcoes {
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.mh-botaoCadastrar {
+  width: 160px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #14dd2f;
+  color: black;
+  cursor: pointer;
+}
+.mh-botaoAlterar {
+  margin-top: 5px;
+  width: 160px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #2943da;
+  color: black;
+  cursor: pointer;
+}

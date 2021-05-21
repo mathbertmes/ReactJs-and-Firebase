@@ -148,19 +148,34 @@ class listagemHoteis extends React.Component {
     });
   };
 
-  pesquisaComFilter = (hotel, chaves, quary) => {
-    chaves.map((chave) => {
+  pesquisaComFilter = (hotel, chaves, pesquisa) => {
+    let arrayBool = chaves.map((chave) => {
       if (typeof hotel[chave] == "string" || typeof hotel[chave] == "number") {
+        return hotel[chave]
+          .toString()
+          .toLowerCase()
+          .includes(pesquisa.toString().toLowerCase());
+      } else if (typeof hotel[chave] == "object") {
+        let teste = Object.keys(hotel[chave]).map((item) => {
+          return hotel[chave][item]
+            .toString()
+            .toLowerCase()
+            .includes(pesquisa.toString().toLowerCase());
+        });
+        return teste.some((h) => h);
+      } else {
+        return false;
       }
     });
+    return arrayBool.some((h) => h);
   };
   valuePesquisa = (e) => {
-    this.setState(
-      (st) => {
-        return { ...st, pesquisa: e.target.value };
-      },
-      () => this.filtraPoPesquisa(this.state.pesquisa)
+    let hoteisProcurados = this.state.hoteis.filter((hotel) =>
+      this.pesquisaComFilter(hotel, Object.keys(hotel), e.target.value)
     );
+    this.setState((st) => {
+      return { ...st, pesquisa: e.target.value, hoteisProcurados };
+    });
   };
 
   defineHoteis = () => {
