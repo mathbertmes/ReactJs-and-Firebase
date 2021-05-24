@@ -13,6 +13,8 @@ class Hotel extends React.Component {
         <div>
           <h2>{this.props.hotel.nome}</h2>
           <br />
+          <h2>{this.props.hotel.estrelas}</h2>
+          <br />
           <h2>{this.props.hotel.localizacao.cidade}</h2>
           <br />
           <h2 id="descricaoHotel">{this.props.hotel.descricao}</h2>
@@ -21,6 +23,9 @@ class Hotel extends React.Component {
           <br />
           <h2>{this.props.hotel.localizacao.estado}</h2>
           <br />
+        </div>
+        <div>
+          <button>Vizualizar Hotel</button>
         </div>
       </div>
     );

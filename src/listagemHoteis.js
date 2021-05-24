@@ -35,7 +35,7 @@ class listagemHoteis extends React.Component {
       );
 
     this.setState((st) => {
-      return { ...st, pageCont: Math.ceil(this.state.elemCount / 15) };
+      return { ...st, pageCont: Math.ceil(this.state.elemCount / 5) };
     });
   }
   avanca = () => {
@@ -215,7 +215,7 @@ class listagemHoteis extends React.Component {
         </div>
 
         <h3>
-          {this.state.selected + 1}/{Math.ceil(this.state.elemCount / 15)}
+          {this.state.selected + 1}/{Math.ceil(this.state.elemCount / 5)}
         </h3>
 
         {this.state.hoteisProcurados.map((hotel) => (
@@ -226,7 +226,7 @@ class listagemHoteis extends React.Component {
           containerClassName={"pagination"}
           previousLabel={"Anterior"}
           nextLabel={"Proximo"}
-          pageCount={Math.ceil(this.state.elemCount / 15)}
+          pageCount={Math.ceil(this.state.elemCount / 5)}
           onPageChange={this.handlePageClick}
         />
       </div>

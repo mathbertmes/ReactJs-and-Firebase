@@ -4,7 +4,7 @@
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
-input{
+input {
   padding: 5px;
 }
 .App {
@@ -18,7 +18,7 @@ input{
   width: 300px;
 }
 
-#sair{
+#sair {
   cursor: pointer;
 }
 
@@ -76,7 +76,7 @@ input{
   color: white;
 }
 
-#pesquisaGeral{
+#pesquisaGeral {
   margin: 0px;
   padding: 15px;
   width: 450px;
@@ -86,34 +86,33 @@ input{
   border-right: 1px solid black;
 }
 
-.exibicao{
+.exibicao {
   margin: auto auto;
   width: 800px;
   padding: 10px;
 }
 
-.banner{
+.banner {
   width: 800px;
   height: 200px;
   background-color: cornflowerblue;
   position: relative;
 }
 
-.imagensPequenasDestinosJuntas{
+.imagensPequenasDestinosJuntas {
   display: flex;
   justify-content: space-between;
-
 }
 
-.imagensPequenasDestinos{
+.imagensPequenasDestinos {
   margin-top: 30px;
-  width : 380px;
+  width: 380px;
   height: 150px;
   background-color: #0cab16;
   position: relative;
 }
 
-.descricaoBanner{
+.descricaoBanner {
   width: 100px;
   height: 35px;
   background-color: white;
@@ -124,13 +123,12 @@ input{
   left: 0px;
 }
 
-#headerPesquisa{
+#headerPesquisa {
   text-align: center;
 }
 #area-formulario {
   margin: auto auto;
 }
-
 
 #destino {
   width: 420px;
@@ -146,7 +144,6 @@ input:focus {
   outline: 0;
 }
 
-
 .checka {
   width: 420px;
   height: 30px;
@@ -154,7 +151,6 @@ input:focus {
   background-color: white;
   outline: 0;
 }
-
 
 .qtda {
   width: 420px;
@@ -202,12 +198,11 @@ input {
   background-color: #b7baba;
   margin: 50px auto;
 }
-#descricaoHotel{
+#descricaoHotel {
   font-size: 0.6em;
 }
 
 .cabecalho {
-  
   height: 80px;
   background-color: #0cab16;
   text-align: center;
@@ -242,26 +237,29 @@ a:hover {
   width: 1000px;
   height: 700px;
   margin: auto auto;
-  border : 1px solid red
+  border: 1px solid red;
 }
 
-.backgroundBranco{
+.backgroundBranco {
   background-color: white;
   text-align: center;
 }
 
-.hotel{
+.hotel {
   margin: 30px auto;
   width: 800px;
-  height: 180px;
+  height: 250px;
   border: 1px solid blue;
   display: flex;
+  justify-content: space-between;
   font-size: 0.8em;
-
+  text-align: center;
 }
 
-.imgHotel{
+.imgHotel {
   height: 180px;
-  width: 180px;;
+  width: 180px;
 }
 
+.hotelSozinho {
+}

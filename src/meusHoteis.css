@@ -4,7 +4,6 @@
 #mh-principal {
   width: 1000px;
   margin: 30px auto;
-  border: 1px solid red;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -12,7 +11,8 @@
   width: 700px;
   height: 200px;
   margin: 20px auto;
-  border: 1px solid blue;
+  border: 1px solid black;
+  padding: 15px;
   display: flex;
   border-radius: 5px;
   justify-content: space-between;
@@ -39,11 +39,12 @@
 }
 .mh-botaoAlterar {
   margin-top: 5px;
-  width: 160px;
+  width: 200px;
+  padding: 5px;
   height: 35px;
   border: 1px solid black;
   border-radius: 5px;
-  background-color: #2943da;
+  background-color: #6f87f0;
   color: black;
   cursor: pointer;
 }

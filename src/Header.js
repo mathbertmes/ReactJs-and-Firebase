@@ -18,7 +18,6 @@ class Cabecalho extends React.Component {
             <>
               <Link to="/hoteis">Buscar hoteis</Link>
               <Link to="/cadastro-hoteis">Cadastre seu hotel</Link>
-              <Link to="/cadastro-de-diarias">Cadastro de diarias</Link>
               <Link to="/perfil">Minha conta</Link>
               <Link to="/meus-hoteis">Meus Hoteis</Link>
               <a id="sair" onClick={this.handleClick}>

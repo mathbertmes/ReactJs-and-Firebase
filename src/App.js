@@ -14,6 +14,7 @@ import CadastroDeDiaria from "./CadastroDeDiaria";
 import Perfil from "./Perfil";
 import MeusHoteis from "./MeusHoteis";
 import HoteisIndividuais from "./HoteisIndividuais";
+import Hotel from "./Hotel";
 
 class App extends React.Component {
   constructor() {
@@ -47,6 +48,7 @@ class App extends React.Component {
             };
           })
         )
+        .then(() => {})
         .catch((e) => console.log(e))
     );
   };
@@ -177,7 +179,7 @@ class App extends React.Component {
         .firestore()
         .collection("Hoteis")
         .orderBy("index")
-        .limit(15)
+        .limit(5)
         .get()
         .then((snapshot) => {
           const hoteis = snapshot.docs.map((ht) => ht.data());
@@ -195,8 +197,8 @@ class App extends React.Component {
         .firestore()
         .collection("Hoteis")
         .orderBy("index")
-        .startAfter(pg * 15)
-        .limit(15)
+        .startAfter(pg * 5)
+        .limit(5)
         .get()
         .then((snapshot) => {
           const hoteis = snapshot.docs.map((ht) => ht.data());

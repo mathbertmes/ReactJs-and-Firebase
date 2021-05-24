@@ -23,15 +23,6 @@ class MeusHoteis extends React.Component {
             </div>
 
             <div className="mh-opcoes">
-              <Link
-                to={`/cadastro-de-diarias/${hotel.id}`}
-                className="mh-botaoCadastrar"
-              >
-                Cadastar Categoria
-              </Link>
-              <br />
-              <button className="mh-botaoAlterar">Alterar Hotel</button>
-              <br />
               <Link to={`/${hotel.id}/meus-hoteis`} className="mh-botaoAlterar">
                 Vizualizar Hotel
               </Link>

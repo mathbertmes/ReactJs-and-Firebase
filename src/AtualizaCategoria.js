@@ -2,7 +2,7 @@ import React from "react";
 import "./CadastroDeDiaria.css";
 import firebase from "./firebase";
 
-class CadastroDeDiaria extends React.Component {
+class AtualizaCategoria extends React.Component {
   constructor() {
     super();
 
@@ -21,39 +21,17 @@ class CadastroDeDiaria extends React.Component {
       m2: 0,
       nDeApartamentos: 0,
       nDePessoas: 0,
+      id: "",
     };
   }
-  cadastraCategoriaBanco = (categoria) => {
-    firebase
-      .firestore()
-      .collection("Hoteis")
-      .doc(this.props.idHotel)
-      .collection("Categorias")
-      .add(categoria)
-      .then(alert(`categoria ${categoria.nome} cadastrada com sucesso!`))
-      .then(() => {
-        this.setState({
-          nome: "",
-          valor: 0,
-          comodidades: {
-            cafeDaManha: false,
-            frigobar: false,
-            arCondicionado: false,
-            cofre: false,
-            tv: false,
-            cozinha: false,
-          },
-          nDeCamas: 0,
-          m2: 0,
-          nDeApartamentos: 0,
-          nDePessoas: 0,
-        });
-      });
+  componentDidMount = () => {
+    this.setState(this.props.categoria);
   };
 
   handleClick = (event) => {
     event.preventDefault();
-    this.cadastraCategoriaBanco(this.state);
+    console.log(this.state);
+    this.props.alteraCategoria(this.state.id, this.state);
   };
 
   handleChange = (event) => {
@@ -75,7 +53,7 @@ class CadastroDeDiaria extends React.Component {
     return (
       <div id="cd-principal">
         <div id="cd-header">
-          <h1>Cadastro de Categorias</h1>
+          <h1>Edição de Categorias</h1>
         </div>
 
         <div className="cd-camposJuntos">
@@ -207,11 +185,11 @@ class CadastroDeDiaria extends React.Component {
         </div>
 
         <button onClick={this.handleClick} id="cd-botaoEntrar">
-          Cadastrar
+          Atualizar
         </button>
       </div>
     );
   }
 }
 
-export default CadastroDeDiaria;
+export default AtualizaCategoria;
