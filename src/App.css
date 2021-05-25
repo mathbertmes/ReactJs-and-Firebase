@@ -204,7 +204,8 @@ input {
 
 .cabecalho {
   height: 80px;
-  background-color: #0cab16;
+  background-color: #e8ee11;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   text-align: center;
   margin: 0;
 }
@@ -222,11 +223,12 @@ a {
 }
 
 a:hover {
-  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
   color: black;
   top: -4px;
-  box-shadow: 0 4px 1px #20bb28;
-  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 1px black;
+  transition: all 0.1s ease-in-out;
 }
 * {
   margin: 0;
@@ -254,12 +256,23 @@ a:hover {
   justify-content: space-between;
   font-size: 0.8em;
   text-align: center;
+  position: relative;
 }
 
 .imgHotel {
   height: 180px;
   width: 180px;
 }
-
-.hotelSozinho {
+.botaoVizualizaHotel {
+  width: 200px;
+  height: 35px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #1567c3;
+  color: black;
+  position: absolute;
+  right: 10px;
+  bottom: 100px;
 }

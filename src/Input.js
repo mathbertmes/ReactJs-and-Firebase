@@ -1,6 +1,7 @@
 import React from "react";
 import firebase from "./firebase";
-import Hotel from "./Hotel";
+import HotelIndividuaisClientes from "./HoteisIndividuaisClientes";
+import HotelCliente from "./HotelCliente";
 
 class Input extends React.Component {
   constructor() {
@@ -14,11 +15,35 @@ class Input extends React.Component {
       nDeCriancas: 0,
       nDeQuartos: 0,
       hoteisPesquisados: [],
+      hoteisPesquisadosCat: [],
+      hotelSelecionado: false,
+      idHotelSelecionado: {},
     };
   }
+  componentDidMount = () => {
+    this.setState({
+      destino: "",
+      checkIn: "",
+      checkOut: "",
+      nDeAdultos: 0,
+      nDeCriancas: 0,
+      nDeQuartos: 0,
+      hoteisPesquisados: [],
+      hoteisPesquisadosCat: [],
+      hotelSelecionado: false,
+      idHotelSelecionado: {},
+    });
+  };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  selecionaHotel = (hotel) => {
+    console.log("Tentando");
+    this.setState((st) => {
+      return { ...st, hotelSelecionado: true, idHotelSelecionado: hotel };
+    });
   };
 
   adicionaDocumentoBusca = (busca) => {
@@ -44,14 +69,50 @@ class Input extends React.Component {
       .where("localizacao.cidade", "==", destino)
       .get()
       .then((h) => {
-        let a = h.docs.map((m) => m.data());
+        let a = h.docs.map((m) => {
+          return { ...m.data(), id: m.id };
+        });
         this.setState((st) => {
-          return { ...st, hoteisPesquisados: a };
+          return {
+            ...st,
+            hoteisPesquisados: a,
+            hotelSelecionado: false,
+            idHotelSelecionado: {},
+          };
         });
       })
       .then(() => {
-        console.log(this.state.hoteisPesquisados);
-      });
+        let promises = this.state.hoteisPesquisados.map((element) => {
+          return firebase
+            .firestore()
+            .collection("Hoteis")
+            .doc(element.id)
+            .collection("Categorias")
+            .get()
+            .then((hotel) => {
+              return hotel.docs.map((doc) => {
+                return { ...doc.data(), idHotel: element.id };
+              });
+            });
+        });
+        Promise.all(promises).then((docs) => {
+          let arrayCat = docs.filter((doc) => {
+            return doc.length > 0;
+          });
+          let hoteisCat = this.state.hoteisPesquisados.filter((hotel) => {
+            let categorias = arrayCat.map((categorias) => {
+              return categorias.some((categoria) => {
+                return categoria.idHotel === hotel.id;
+              });
+            });
+            return categorias.some((categoria) => categoria);
+          });
+          this.setState((st) => {
+            return { ...st, hoteisPesquisadosCat: hoteisCat };
+          });
+        });
+      })
+      .then(console.log(this.state.hoteisPesquisadosCat.length));
   };
 
   handleClick = (event) => {
@@ -151,35 +212,46 @@ class Input extends React.Component {
           </form>
         </div>
         <div className="exibicao">
-          {this.state.hoteisPesquisados.length < 1 && (
-            <div>
-              <div className="banner">
-                <h3 className="descricaoBanner">Imagem</h3>
-              </div>
-              <div className="imagensPequenasDestinosJuntas">
-                <div className="imagensPequenasDestinos">
+          {!this.state.hotelSelecionado &&
+            this.state.hoteisPesquisadosCat.length == 0 && (
+              <div>
+                <div className="banner">
                   <h3 className="descricaoBanner">Imagem</h3>
                 </div>
-                <div className="imagensPequenasDestinos">
-                  <h3 className="descricaoBanner">Imagem</h3>
+                <div className="imagensPequenasDestinosJuntas">
+                  <div className="imagensPequenasDestinos">
+                    <h3 className="descricaoBanner">Imagem</h3>
+                  </div>
+                  <div className="imagensPequenasDestinos">
+                    <h3 className="descricaoBanner">Imagem</h3>
+                  </div>
                 </div>
-              </div>
 
-              <div className="imagensPequenasDestinosJuntas">
-                <div className="imagensPequenasDestinos">
-                  <h3 className="descricaoBanner">Imagem</h3>
-                </div>
-                <div className="imagensPequenasDestinos">
-                  <h3 className="descricaoBanner">Imagem</h3>
+                <div className="imagensPequenasDestinosJuntas">
+                  <div className="imagensPequenasDestinos">
+                    <h3 className="descricaoBanner">Imagem</h3>
+                  </div>
+                  <div className="imagensPequenasDestinos">
+                    <h3 className="descricaoBanner">Imagem</h3>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-          {this.state.hoteisPesquisados.length > 0 && (
+            )}
+          {!this.state.hotelSelecionado &&
+            this.state.hoteisPesquisadosCat.length > 0 && (
+              <div>
+                {this.state.hoteisPesquisadosCat.map((hotel) => (
+                  <HotelCliente
+                    selecionaHotel={this.selecionaHotel}
+                    hotel={hotel}
+                  />
+                ))}
+              </div>
+            )}
+
+          {this.state.hotelSelecionado && (
             <div>
-              {this.state.hoteisPesquisados.map((hotel) => (
-                <Hotel hotel={hotel} />
-              ))}
+              <HotelIndividuaisClientes hotel={this.state.idHotelSelecionado} />
             </div>
           )}
         </div>

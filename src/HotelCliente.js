@@ -1,6 +1,10 @@
 import React from "react";
 
-class Hotel extends React.Component {
+class HotelCliente extends React.Component {
+  handleClick = () => {
+    this.props.selecionaHotel(this.props.hotel);
+  };
+
   render() {
     return (
       <div className="hotel">
@@ -24,9 +28,15 @@ class Hotel extends React.Component {
           <h2>{this.props.hotel.localizacao.estado}</h2>
           <br />
         </div>
+        <button
+          className="botaoVizualizaHotel"
+          onClick={this.props.selecionaHotel.bind(this, this.props.hotel)}
+        >
+          Visualizar Hotel
+        </button>
         <div></div>
       </div>
     );
   }
 }
-export default Hotel;
+export default HotelCliente;

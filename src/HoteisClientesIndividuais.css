@@ -1,0 +1,62 @@
+#hc-informacoesHoteis {
+  width: 600px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 10px auto;
+}
+
+.hc-linhainformacoes {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+#hc-categorias {
+  width: 600px;
+  margin: 10px auto;
+}
+
+#hc-headerCategoria {
+  width: 600px;
+  margin: auto;
+  margin-top: 35px;
+  text-align: left;
+}
+
+.hc-categoriasIndividuais {
+  width: 580px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 10px auto;
+  padding: 10px;
+  position: relative;
+}
+
+.hc-headerCategoriaIndividual {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.hc-elementosCategorias {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.hc-botaoReserva {
+  width: 100px;
+  height: 30px;
+  padding: 5px;
+  border: 1px solid black;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.hc-valorReserva {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
