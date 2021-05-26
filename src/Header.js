@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Header.CSS";
 
 class Cabecalho extends React.Component {
   handleClick = () => {
@@ -14,7 +15,18 @@ class Cabecalho extends React.Component {
           <div>
             <Link to="/">Home</Link>
           </div>
-          {this.props.isLogged && (
+          {this.props.isLogged && this.props.hoteisDoUsuario.length < 1 && (
+            <>
+              <Link to="/hoteis">Buscar hoteis</Link>
+              <Link to="/cadastro-hoteis">Cadastre seu hotel</Link>
+              <Link to="/perfil">Minha conta</Link>
+              <a id="sair" onClick={this.handleClick}>
+                Sair
+              </a>
+            </>
+          )}
+
+          {this.props.isLogged && this.props.hoteisDoUsuario.length > 0 && (
             <>
               <Link to="/hoteis">Buscar hoteis</Link>
               <Link to="/cadastro-hoteis">Cadastre seu hotel</Link>

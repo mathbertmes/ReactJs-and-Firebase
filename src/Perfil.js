@@ -1,5 +1,6 @@
 import React from "react";
 import "./Perfil.css";
+import firebase from "./firebase";
 
 class Perfil extends React.Component {
   constructor() {
@@ -23,6 +24,14 @@ class Perfil extends React.Component {
   };
   handleClickSenha = (event) => {
     this.setState({ editableSenha: true });
+    let emailAddress = this.props.user.email;
+
+    firebase
+      .auth()
+      .sendPasswordResetEmail(emailAddress)
+      .then((task) => {
+        alert("Email para alteração de senha foi enviado com sucesso!");
+      });
   };
 
   handleChange = (e) => {

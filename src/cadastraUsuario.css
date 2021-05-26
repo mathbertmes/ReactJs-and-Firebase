@@ -1,48 +1,53 @@
-*{
-    margin:0;
+* {
+  margin: 0;
 }
 
-#principal{
-    margin : 35px auto;
-    width: 400px;
-    padding:10px;
-    height: 500px;
-    text-align: center;
-    position: relative;
-    
-}
-form{
-    text-align: left;
-    height: 500px;
-    
+#headerCadastroUsuario {
+  font-size: 2em;
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
-.inputs{
-    width: 380px;
-    height: 20px;
-    padding:5px;
-    border-radius: 5px;
-    border: 1px solid black;
-    background-color: white;
+#principalCadastroUsuarios {
+  margin: 35px auto;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  width: 800px;
 }
-#termos{
-    text-decoration: underline;
-    color : blue;
-    cursor: pointer;
+#formCadastroUsuario {
+  text-align: left;
+  width: 500px;
+  height: 540px;
+  margin: 30px auto;
+  position: relative;
 }
 
-#botaoCad{
-    position: absolute;
-    left: 160px;
-    bottom : 40px;
-    width: 100px;
-    height: 30px;
-    padding: 5px;
-    background-color: blue;
-    font-size: 1em;
-    color: white;
-    border-radius: 5px;
-    border: 1px solid black;
-    text-align: center;
-    cursor: pointer;
+.inputsCadastroUsuarioX {
+  width: 450px;
+  height: 25px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: white;
+}
+#termos {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+#botaoCad {
+  position: absolute;
+  left: 175px;
+  bottom: 40px;
+  width: 150px;
+  height: 40px;
+  padding: 5px;
+  background-color: rgb(62, 62, 255);
+  font-size: 1em;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
 }

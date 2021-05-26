@@ -30,6 +30,19 @@ class App extends React.Component {
     };
   }
 
+  leHoteisCadastro = () => {
+    firebase
+      .firestore()
+      .collection("Usuarios")
+      .doc(this.state.user.id)
+      .get()
+      .then((snapshot) => {
+        const user = { ...snapshot.data(), id: snapshot.id };
+        this.setState({ isLogged: true, user: user, hoteisDoUsuario: [] });
+        console.log(this.state);
+      })
+      .then(this.leHoteis);
+  };
   leHoteis = () => {
     console.log(this.state.user.idsHoteis);
     this.state.user.idsHoteis.map((hotel) =>
@@ -79,6 +92,36 @@ class App extends React.Component {
       });
   };
 
+  logaAuth = (email, senha) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, senha)
+      .then((userCredential) => {
+        var user = userCredential.user;
+        firebase
+          .firestore()
+          .collection("Usuarios")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            const user = { ...snapshot.data(), id: snapshot.id };
+            this.setState({ isLogged: true, user: user });
+            console.log(this.state);
+          })
+          .then(this.leHoteis);
+
+        // ...
+      })
+      .then(() => {
+        console.log("Logado com sucesso!");
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert("Usuario Não Cadastrado");
+      });
+  };
+
   loga = (email, senha) => {
     firebase
       .firestore()
@@ -118,19 +161,28 @@ class App extends React.Component {
     });
   };
 
-  cadastraUsuario = (email, password) => {
+  cadastraUsuario = (email, password, user) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in
-        var user = userCredential.user;
+        var userId = userCredential.user.uid;
         console.log("Usuario cadastrado! Bem vindo " + user);
+        let userCorrect = user;
+        delete userCorrect.senha;
+        delete userCorrect.confirmacao;
+
+        firebase
+          .firestore()
+          .collection("Usuarios")
+          .doc(userId)
+          .set(userCorrect);
         // ...
       })
       .catch((error) => {
         var errorMessage = error.message;
-        console.log(errorMessage);
+        alert("errorMessage");
         // ..
       });
   };
@@ -243,17 +295,21 @@ class App extends React.Component {
     return (
       <div>
         <Router>
-          <Cabecalho sair={this.sair} isLogged={this.state.isLogged} />
+          <Cabecalho
+            hoteisDoUsuario={this.state.hoteisDoUsuario}
+            sair={this.sair}
+            isLogged={this.state.isLogged}
+          />
           <Switch>
             {!this.state.isLogged && (
               <Route path="/login">
                 <div>
-                  <Login loga={this.loga} />
+                  <Login loga={this.logaAuth} />
                 </div>
               </Route>
             )}
 
-            {this.state.isLogged && (
+            {this.state.isLogged && this.state.hoteisDoUsuario.length > 0 && (
               <Route path="/meus-hoteis">
                 <div>
                   <MeusHoteis
@@ -285,15 +341,18 @@ class App extends React.Component {
             {!this.state.isLogged && (
               <Route path="/cadastro-usuario">
                 <div>
-                  <CadastraUsuario />
+                  <CadastraUsuario cadastra={this.cadastraUsuario} />
                 </div>
               </Route>
             )}
 
-            {this.state.isLogged && this.state.hoteisDoUsuario.length > 0 && (
+            {this.state.isLogged && (
               <Route path="/cadastro-hoteis">
                 <div>
-                  <CadastraHotel />
+                  <CadastraHotel
+                    leHoteisCadastro={this.leHoteisCadastro}
+                    user={this.state.user}
+                  />
                 </div>
               </Route>
             )}
