@@ -1,6 +1,7 @@
 import React from "react";
 import "./Perfil.css";
 import firebase from "./firebase";
+import "firebase/storage";
 
 class Perfil extends React.Component {
   constructor() {
@@ -10,8 +11,31 @@ class Perfil extends React.Component {
       editableTelefone: false,
       editableEmail: false,
       editableSenha: false,
+      image: "",
     };
   }
+
+  componentDidMount = () => {
+    var storageRef = firebase.storage().ref();
+    var starsRef = storageRef.child(`users/${this.props.user.id}`);
+    starsRef.getDownloadURL().then((url) => this.setState({ image: url }));
+  };
+
+  handleChangeImage = (e) => {
+    var storageRef = firebase.storage().ref();
+    var mountainImagesRef = storageRef.child(`users/${this.props.user.id}`);
+    console.log(e.target.files[0]);
+    var file = e.target.files[0]; // use the Blob or File API
+    mountainImagesRef
+      .put(file)
+      .then(function (snapshot) {
+        console.log("Imagem salva com sucesso!");
+      })
+      .then(() => {
+        var starsRef = storageRef.child(`users/${this.props.user.id}`);
+        starsRef.getDownloadURL().then((url) => this.setState({ image: url }));
+      });
+  };
 
   handleClickNome = (event) => {
     this.setState({ editableNome: true });
@@ -56,6 +80,21 @@ class Perfil extends React.Component {
     return (
       <div id="pf-principal">
         <h2>Dados Pessoais</h2>
+        <br />
+        <div id="pf-imagemPerfilGeral">
+          <img id="pf-imagemPerfil" src={this.state.image}></img>
+          <br />
+          <br />
+          <label id="pf-labelSelecao" for="selecao-arquivo">
+            Alterar imagem de perfil
+          </label>
+          <input
+            onChange={this.handleChangeImage}
+            id="selecao-arquivo"
+            type="file"
+          />
+        </div>
+
         {!this.state.editableNome &&
           !this.state.editableEmail &&
           !this.state.editableTelefone &&
