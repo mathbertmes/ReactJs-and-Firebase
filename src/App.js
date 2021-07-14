@@ -15,6 +15,7 @@ import Perfil from "./Perfil";
 import MeusHoteis from "./MeusHoteis";
 import HoteisIndividuais from "./HoteisIndividuais";
 import Hotel from "./Hotel";
+import axios from "axios";
 
 class App extends React.Component {
   constructor() {
@@ -106,7 +107,6 @@ class App extends React.Component {
           .then((snapshot) => {
             const user = { ...snapshot.data(), id: snapshot.id };
             this.setState({ isLogged: true, user: user });
-            console.log(this.state);
           })
           .then(this.leHoteis);
 
@@ -201,6 +201,17 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    let config = {
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3001/",
+      },
+    };
+
+    axios
+      .get(
+        "https://us-central1-teste-5b3a5.cloudfunctions.net/HoteisJson?method=get"
+      )
+      .then((h) => console.log(h.data));
     this.lerBanco()
       .then((buscas) => this.setState({ buscas }))
       .catch((erro) => console.log(erro));
